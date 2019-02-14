@@ -21,6 +21,10 @@ module.exports = function(sequelize, DataTypes) {
         },
         foodCategory1:{
             type: DataTypes.STRING           
+        },
+        truckLive:{
+            type: BOOLEAN,
+            defaultValue: '0'
         }
     }, {
         freezeTableName: true,
