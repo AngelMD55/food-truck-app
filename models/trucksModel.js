@@ -9,7 +9,7 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
         },
         priceRange:{
-            type: CharacterData(4),
+            type: DataTypes.CHAR(4),
             allowNull: false
         },
         foodCategory1:{
