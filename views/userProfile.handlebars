@@ -1,0 +1,76 @@
+<form novalidate>
+    <div class="card">
+        <div class="card-body">
+            <div>
+                <fieldset disabled>
+                    <div class="row">
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="First name">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Last name">
+                        </div>
+                        <div class="row">
+                            <input type="text" class="form-control" placeholder="Email">
+                        </div>
+                </fieldset>
+                <div class="imageFile">
+                    <input type="file" class="imageFile" id="imageFile" required>
+                    <label class="imageFileLabel" for="imageFile">Choose file...</label>
+                </div>
+                <div class="row">
+                    <input type="address" class="form-control" placeholder="Address" required>
+                    <div class="invalid-feedback">
+                        Please provide a valid address.
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        <input type="city" class="form-control" placeholder="City" required>
+                        <div class="invalid-feedback">
+                            Please provide a valid city.
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <input type="state" class="form-control" placeholder="State" required>
+                    <div class="invalid-feedback">
+                        Please provide a valid state.
+                    </div>
+                </div>
+                <div class="col">
+                    <input type="zip" class="form-control" placeholder="Zip Code" required>
+                    <div class="invalid-feedback">
+                        Please provide a valid zip.
+                    </div>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="male" type="checkbox" id="customer" value="customer" required>
+                    <label class="male" for="male">Male</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="female" type="checkbox" id="female" value="female" required>
+                    <label class="female" for="female">Female</label>
+                </div>
+                <div class="form-group">
+                    <label for="birthDate" class="col-sm-3 control-label">Date of Birth</label>
+                    <div class="col-sm-9">
+                        <input type="date" id="birthDate" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-check">
+                        <input class="agreement" type="checkbox" value="" id="agreement" required>
+                        <label class="agreement" for="agreement">
+                            Agree to terms and conditions
+                        </label>
+                        <div class="invalid-feedback">
+                            You must agree before submitting.
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-success">Submit</button>
+            </div>
+        </div>
+    </div>
+</form>
