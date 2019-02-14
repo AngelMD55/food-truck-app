@@ -8,8 +8,9 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false
         },
-        priceRange: {
-            type: CharacterData(4),
+        priceRange:{
+            type: DataTypes.CHAR(4),
+
             allowNull: false
         },
         foodCategory1: {
@@ -21,6 +22,9 @@ module.exports = function (sequelize, DataTypes) {
         },
         foodCategory1: {
             type: DataTypes.STRING
+        },
+        foodCategory1:{
+            type: DataTypes.STRING           
         },
         truckLive: {
             type: BOOLEAN,
