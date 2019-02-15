@@ -23,7 +23,7 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING           
         },
         truckLive:{
-            type: BOOLEAN,
+            type: DataTypes.BOOLEAN,
             defaultValue: '0'
         }
     }, {
