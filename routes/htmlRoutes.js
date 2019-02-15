@@ -5,7 +5,23 @@ module.exports = function(app) {
   app.get("/", function(req, res) {
       res.render("index")
       });
-    };
+  // Load user profile page
+  app.get("/userp", function(req, res){
+    res.render("userProfile")
+    });
+  // Load user view page
+  app.get("/userv", function(req, res){
+    res.render("userView")
+  });
+  // Load vendor profile page
+  app.get("/vendorp", function(req, res){
+    res.render("vendorProfile")
+  })
+  // Load 404 page
+  app.get("/404", function(req, res){
+    res.render("404")
+  });
+};
 
 
   // // Load example page and pass in an example by id
@@ -21,4 +37,4 @@ module.exports = function(app) {
   // app.get("*", function(req, res) {
   //   res.render("404");
   // });
-};
+
