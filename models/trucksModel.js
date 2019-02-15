@@ -26,8 +26,8 @@ module.exports = function (sequelize, DataTypes) {
         foodCategory1:{
             type: DataTypes.STRING           
         },
-        truckLive: {
-            type: BOOLEAN,
+        truckLive:{
+            type: DataTypes.BOOLEAN,
             defaultValue: '0'
         }
     }, {
