@@ -1,54 +1,67 @@
+// geolocation
+var map, infoWindow;
 
-// const keys = require("./keys.js");
+function initMap() {
+	map = new google.maps.Map(document.getElementById('geocodeMap'), {
+		center: { lat: 32.2226, lng: 110.9747 },
+		zoom: 6
+	});
+	infoWindow = new google.maps.InfoWindow;
 
-// const geocodeKey = keys.mapsGeocode.key;
+	if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(function (position) {
+			var pos = {
+				lat: position.coords.latitude,
+				lng: position.coords.longitude
+			};
 
-// let queryURL = `https://maps.googleapis.com/maps/api/js?key=${geocodeKey}&callback=initMap`
-
-var truckLocations = {
-	info: {
-		name: ${truckName},
-		location: ${truckAddress}
-	},
-	lat: ${truckLat},
-	long: ${truckLong},
+			infoWindow.setPosition(pos);
+			infoWindow.setContent('Location found.');
+			infoWindow.open(map);
+			map.setCenter(pos);
+		}, function () {
+			handleLocationError(true, infoWindow, map.getCenter());
+		});
+	} else {
+		// Browser doesn't support Geolocation
+		handleLocationError(false, infoWindow, map.getCenter());
+	}
 }
 
-function initGeocodeMap() {
-	
-	var broadway = {
-		info: '<strong>Chipotle on Broadway</strong><br>\
-					5224 N Broadway St<br> Chicago, IL 60640<br>\
-					<a href="https://goo.gl/maps/jKNEDz4SyyH2">Get Directions</a>',
-		lat: 41.976816,
-		long: -87.659916
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+	infoWindow.setPosition(pos);
+	infoWindow.setContent(browserHasGeolocation ?
+		'Error: The Geolocation service failed.' :
+		'Error: Your browser doesn\'t support geolocation.');
+	infoWindow.open(map);
+}
+
+// geocoded
+function initMap() {
+
+	var azStadium = {
+		info: '<strong>Arizona Stadium</strong><br>\
+					1 N National Championship Dr, Tucson, AZ 85719<br>\
+					<a href="https://goo.gl/maps/56oQf7aEkNU2">Get Directions</a>',
+		lat: 32.228948,
+		lng: 110.948254
 	};
 
-	var belmont = {
-		info: '<strong>Chipotle on Belmont</strong><br>\
-					1025 W Belmont Ave<br> Chicago, IL 60657<br>\
-					<a href="https://goo.gl/maps/PHfsWTvgKa92">Get Directions</a>',
-		lat: 41.939670,
-		long: -87.655167
+	var rocksRopes = {
+		info: '<strong>Rocks n Ropes</strong><br>\
+					330 S Toole Ave #400, Tucson, AZ 85701<br>\
+					<a href="https://goo.gl/maps/MwM9CgQEEzq">Get Directions</a>',
+		lat: 32.217654,
+		lng: 110.960857
 	};
 
-	var sheridan = {
-		info: '<strong>Chipotle on Sheridan</strong><br>\r\
-					6600 N Sheridan Rd<br> Chicago, IL 60626<br>\
-					<a href="https://goo.gl/maps/QGUrqZPsYp92">Get Directions</a>',
-		lat: 42.002707,
-		long: -87.661236
-	};
-
-	var locations = [
-      [broadway.info, broadway.lat, broadway.long, 0],
-      [belmont.info, belmont.lat, belmont.long, 1],
-      [sheridan.info, sheridan.lat, sheridan.long, 2],
+	var truckLocations = [
+      [azStadium.info, azStadium.lat, azStadium.lng, 0],
+      [rocksRopes.info, rocksRopes.lat, rocksRopes.lng, 1],
     ];
 
 	var map = new google.maps.Map(document.getElementById('geocodeMap'), {
 		zoom: 13,
-		// coordinates for tucson below
 		center: new google.maps.LatLng(32.2226, 110.9747),
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	});
@@ -57,15 +70,15 @@ function initGeocodeMap() {
 
 	var marker, i;
 
-	for (i = 0; i < locations.length; i++) {
+	for (i = 0; i < truckLocations.length; i++) {
 		marker = new google.maps.Marker({
-			position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+			position: new google.maps.LatLng(truckLocations[i][1], truckLocations[i][2]),
 			map: map
 		});
 
 		google.maps.event.addListener(marker, 'click', (function (marker, i) {
 			return function () {
-				infowindow.setContent(locations[i][0]);
+				infowindow.setContent(truckLocations[i][0]);
 				infowindow.open(map, marker);
 			}
 		})(marker, i));
