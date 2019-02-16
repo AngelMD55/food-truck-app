@@ -1,0 +1,32 @@
+{{!-- container for google maps --}}
+<div class="container">
+    <div class="row mb-3">
+        <div id="googleMap">
+            <img src="https://imgplaceholder.com/640x360" alt="image placeholder for goolemaps">
+        </div>
+    </div>
+</div>
+
+
+{{!-- container for search options --}}
+<div class="container">
+    <div class="row">
+        <div class="col" style="display:inline-block">
+            <h2>Search by:</h2>
+        </div>
+        <div class="col ml-3 mr-3" style="display:inline-block">
+            <select id="searchBy">
+                <option value="" disabled selected>Select your option</option>
+                <option value="foodCategory1">Category</option>
+                <option value="truckName">Truck Name</option>
+            </select>
+        </div>
+        <div class="col" style="display:inline-block">
+            <select id="searchOptions">
+                {{!-- HERE WE HAVE TO DO AN IF ELSE STATEMENT IF SEARCH BY 
+                CATEGORY OPTIONS FOR CATEGORY SHALL BE DISPLAY IF BY
+                TRUCK NAME OPTIONS FOR TRUCKNAMES --}}
+            </select>
+        </div>
+    </div>
+</div>
