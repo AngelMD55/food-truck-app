@@ -2,8 +2,11 @@
 var map, infoWindow;
 
 function initMap() {
-	map = new google.maps.Map(document.getElementById('geocodeMap'), {
-		center: { lat: 32.2226, lng: 110.9747 },
+
+	var DefaultLatLng= new google.maps.LatLng('32.2226', '10.9747');
+
+	map = new google.maps.Map($('#geocodeMap'), {
+		center: DefaultLatLng,
 		zoom: 6
 	});
 	infoWindow = new google.maps.InfoWindow;
@@ -56,11 +59,11 @@ function initMap() {
 	};
 
 	var truckLocations = [
-      [azStadium.info, azStadium.lat, azStadium.lng, 0],
-      [rocksRopes.info, rocksRopes.lat, rocksRopes.lng, 1],
-    ];
+		[azStadium.info, azStadium.lat, azStadium.lng, 0],
+		[rocksRopes.info, rocksRopes.lat, rocksRopes.lng, 1],
+	];
 
-	var map = new google.maps.Map(document.getElementById('geocodeMap'), {
+	var map = new google.maps.Map($('#geocodeMap'), {
 		zoom: 13,
 		center: new google.maps.LatLng(32.2226, 110.9747),
 		mapTypeId: google.maps.MapTypeId.ROADMAP
