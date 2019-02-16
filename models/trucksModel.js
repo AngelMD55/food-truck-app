@@ -20,11 +20,8 @@ module.exports = function (sequelize, DataTypes) {
         foodCategory2: {
             type: DataTypes.STRING
         },
-        foodCategory1: {
+        foodCategory3: {
             type: DataTypes.STRING
-        },
-        foodCategory1:{
-            type: DataTypes.STRING           
         },
         truckLive:{
             type: DataTypes.BOOLEAN,
