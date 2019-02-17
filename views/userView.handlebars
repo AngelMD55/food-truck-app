@@ -1,8 +1,17 @@
+<style>
+    geoMap{
+        height: 200px,
+        width: 100%
+    }
+
+</style>
+
 {{!-- container for google maps --}}
 <div class="container">
     <div class="row mb-3">
-        <div id="googleMap">
-            <img src="https://imgplaceholder.com/640x360" alt="image placeholder for goolemaps">
+        {{!-- updated id to geocodeMap --}}
+        <div class= "geoMap"id="geocodeMap">
+
         </div>
     </div>
 </div>
@@ -30,3 +39,5 @@
         </div>
     </div>
 </div>
+
+<script src="../public/js/app.js"></script>
