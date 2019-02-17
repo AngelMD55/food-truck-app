@@ -17,6 +17,10 @@ module.exports = function(app) {
   app.get("/vendorp", function(req, res){
     res.render("vendorProfile")
   })
+  // Load vendor view page
+  app.get("/vendorv", function(req, res){
+    res.render("vendorView")
+  });
   // Load 404 page
   app.get("/404", function(req, res){
     res.render("404")
