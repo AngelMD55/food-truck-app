@@ -1,7 +1,12 @@
 const bcrypt = require("bcrypt");
 
 module.exports = function (sequelize, DataTypes) {
-  const user = sequelize.define("users", {
+  const User = sequelize.define("User", {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
     firstName: {
       type: DataTypes.STRING,
       allowNull: false
@@ -12,7 +17,7 @@ module.exports = function (sequelize, DataTypes) {
     },
     userName: {
       type: DataTypes.STRING,
-      allowNull: false
+      defaultValue: "user name"
     },
     userPassword: {
       type: DataTypes.STRING,
@@ -23,8 +28,8 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: false
     },
     userPhoneNum: {
-      type: DataTypes.CHAR(10),
-      allowNull: false
+      type: DataTypes.CHAR(12),
+      defaultValue: "555-555-5555"
     },
     userEmail: {
       type: DataTypes.STRING,
@@ -32,25 +37,28 @@ module.exports = function (sequelize, DataTypes) {
     },
     userAddress: {
       type: DataTypes.STRING,
-      allowNull: false
+      defaultValue: "Address"
     },
     userCity: {
       type: DataTypes.STRING,
-      allowNull: false
+      defaultValue: "City"
     },
     userState: {
       type: DataTypes.STRING,
-      allowNull: false
+      defaultValue: "State"
     },
     userZipCode: {
       type: DataTypes.CHAR(5),
-      allowNull: false
+      defaultValue: "85711"
     },
     userGender: {
       type: DataTypes.STRING,
-      allowNull: false
+      defaultValue: "Gender"
     },
-    userBday: DataTypes.DATEONLY,
+    userBday:{
+      type: DataTypes.DATEONLY,
+      defaultValue: 01/01/1980
+    },
     paidUser: {
       type: DataTypes.BOOLEAN,
       defaultValue: '0',
@@ -59,13 +67,13 @@ module.exports = function (sequelize, DataTypes) {
   }, {
       freezeTableName: true,
       instanceMethods: {
-        generateHash(password) {
-          return bcrypt.hash(password, bcrypt.genSaltSync(8));
+        generateHash(userPassword) {
+          return bcrypt.hash(userPassword, bcrypt.genSaltSync(8));
         },
-        validPassword(password) {
-          return bcrypt.compare(password, this.password);
+        validPassword(userPassword) {
+          return bcrypt.compare(userPassword, this.userPassword);
         }
       }
     });
-  return user;
+  return User;
 };
