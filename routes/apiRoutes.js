@@ -40,30 +40,33 @@ module.exports = function (app) {
       res.json(dbUser);
     });
   });
-};
-// Get all examples
-// app.get("/api/trucks", function(req, res) {
-//   db.Example.findAll({}).then(function(dbExamples) {
-//     res.json(dbExamples);
-//   });
-// });
-// Delete an example by id
-// app.delete("/api/examples/:id", function(req, res) {
-//   db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-//     res.json(dbExample);
-//   });
-// });
 
-app.put("/api/checkintrucks/", function (req, res) {
-  db.trucks.update({
-    truckLive: req.body.truckLive,
-  }, {
-      where: {
-        truckName: req.body.truckName
-      }
-    }).then(function (dbtrucks) {
-      res.json(dbtrucks);
-    });
+  // Get all examples
+  // app.get("/api/trucks", function(req, res) {
+  //   db.Example.findAll({}).then(function(dbExamples) {
+  //     res.json(dbExamples);
+  //   });
+  // });
+  // Delete an example by id
+  // app.delete("/api/examples/:id", function(req, res) {
+  //   db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
+  //     res.json(dbExample);
+  //   });
+  // });
+
+  app.put("/api/checkintrucks/", function (req, res) {
+    db.trucks.update({
+      truckLive: req.body.truckLive,
+    }, {
+        where: {
+          truckName: req.body.truckName
+        }
+      }).then(function (dbtrucks) {
+        res.json(dbtrucks);
+      });
+    
+  });
+};
 
 
 
