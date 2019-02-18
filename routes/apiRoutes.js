@@ -10,7 +10,7 @@ module.exports = function (app) {
       userPassword: req.body.userPassword,
       userType: req.body.userType,
       userEmail: req.body.userEmail
-    }).then(function(dbUser) {
+    }).then(function (dbUser) {
       // console.log("apiRoutes----" + res.body)
       res.json(dbUser);
     });
@@ -26,7 +26,7 @@ module.exports = function (app) {
   //   });
   // });
 
-  app.put("/api/users/", function(req, res) {
+  app.put("/api/users/", function (req, res) {
     db.User.update({
       userName: req.body.userName,
       userPhoneNum: req.body.userPhoneNum,
@@ -36,20 +36,37 @@ module.exports = function (app) {
       userZip: req.body.userZip,
       userGender: req.body.userGender,
       userBday: req.body.userBday
-      }).then(function (dbUser) {
-        res.json(dbUser);
-      });
+    }).then(function (dbUser) {
+      res.json(dbUser);
+    });
   });
 };
-  // Get all examples
-  // app.get("/api/trucks", function(req, res) {
-  //   db.Example.findAll({}).then(function(dbExamples) {
-  //     res.json(dbExamples);
-  //   });
-  // });
-    // Delete an example by id
-  // app.delete("/api/examples/:id", function(req, res) {
-  //   db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-  //     res.json(dbExample);
-  //   });
-  // });
+// Get all examples
+// app.get("/api/trucks", function(req, res) {
+//   db.Example.findAll({}).then(function(dbExamples) {
+//     res.json(dbExamples);
+//   });
+// });
+// Delete an example by id
+// app.delete("/api/examples/:id", function(req, res) {
+//   db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
+//     res.json(dbExample);
+//   });
+// });
+
+app.put("/api/checkintrucks/", function (req, res) {
+  db.trucks.update({
+    truckLive: req.body.truckLive,
+  }, {
+      where: {
+        truckName: req.body.truckName
+      }
+    }).then(function (dbtrucks) {
+      res.json(dbtrucks);
+    });
+
+
+
+
+
+
