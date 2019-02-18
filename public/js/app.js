@@ -1,5 +1,39 @@
-// geolocation
+let truck = $("#truckName").text();
+// array of truck objects
+let truckLocations = [];
 
+// user allows geolocation and function gets user position and truck name, then pushes truckOb to truckLocations array
+function getPosition() {
+	if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(displayLocationInfo);
+
+		function displayLocationInfo(position) {
+			const lat = position.coords.latitude;
+			const lng = position.coords.longitude;
+
+			let truckOb = {
+				truckName: truck,
+				lat: lat,
+				lng: lng,
+			}
+
+			console.log(truckOb);
+			truckLocations.push(truckOb)
+
+			console.log(`longitude: ${lng} | latitude: ${lat}`);
+		}
+	} else {
+		console.log("browser doesn't support geolocation api")
+	}
+
+	$("#vendorCheckIn").on("click", function (position) {
+		console.log(truckLocations);
+
+	})
+}
+getPosition();
+
+// geolocation
 var map, infoWindow;
 
 function initMap() {
@@ -9,7 +43,7 @@ function initMap() {
 	});
 	console.log(map);
 
-	infoWindow = new google.maps.InfoWindow();
+	infoWindow = new google.maps.InfoWindow;
 
 	// Try HTML5 geolocation.
 	if (navigator.geolocation) {
@@ -90,6 +124,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 // 		})(marker, i));
 // 	}
 // }
+<<<<<<< HEAD
 
 $("#vendorCheckIn").on("click", function() {
 
@@ -115,3 +150,5 @@ $("#vendorCheckIn").on("click", function() {
 
 	console.log(this);
 });
+=======
+>>>>>>> 8d53d93d6837372e838a11b14cbb0c7f227391e2
