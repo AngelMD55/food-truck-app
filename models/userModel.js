@@ -57,7 +57,7 @@ module.exports = function (sequelize, DataTypes) {
     },
     userBday:{
       type: DataTypes.DATEONLY,
-      defaultValue: 01/01/1980
+      defaultValue: DataTypes.NOW
     },
     paidUser: {
       type: DataTypes.BOOLEAN,
