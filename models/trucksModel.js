@@ -26,7 +26,11 @@ module.exports = function (sequelize, DataTypes) {
         truckLive:{
             type: DataTypes.BOOLEAN,
             defaultValue: '0'
-        }
+        },
+        truckLatLng: {
+            type: DataTypes.GEOMETRY.POINT,
+            defaultValue: (32.2226, 110.9747)
+        },
     }, {
             freezeTableName: true,
         });

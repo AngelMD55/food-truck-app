@@ -1,43 +1,45 @@
-// // geolocation
-// var map, infoWindow;
+// geolocation
 
-// function initMap() {
+var map, infoWindow;
+function initMap() {
+	map = new google.maps.Map(document.getElementById('map'), {
+		center: { lat: 32.2226, lng: 110.9747 },
+		zoom: 6
+	});
+	console.log(map);
+	
+	infoWindow = new google.maps.InfoWindow;
 
-// 	var DefaultLatLng= new google.maps.LatLng('32.2226', '10.9747');
+	// Try HTML5 geolocation.
+	if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(function (position) {
+			var pos = {
+				lat: position.coords.latitude,
+				lng: position.coords.longitude
+			};
 
-// 	map = new google.maps.Map($('#geocodeMap'), {
-// 		center: DefaultLatLng,
-// 		zoom: 6
-// 	});
-// 	infoWindow = new google.maps.InfoWindow;
+			console.log(pos);
 
-// 	if (navigator.geolocation) {
-// 		navigator.geolocation.getCurrentPosition(function (position) {
-// 			var pos = {
-// 				lat: position.coords.latitude,
-// 				lng: position.coords.longitude
-// 			};
+			infoWindow.setPosition(pos);
+			infoWindow.setContent('Location found.');
+			infoWindow.open(map);
+			map.setCenter(pos);
+		}, function () {
+			handleLocationError(true, infoWindow, map.getCenter());
+		});
+	} else {
+		// Browser doesn't support Geolocation
+		handleLocationError(false, infoWindow, map.getCenter());
+	}
+};
 
-// 			infoWindow.setPosition(pos);
-// 			infoWindow.setContent('Location found.');
-// 			infoWindow.open(map);
-// 			map.setCenter(pos);
-// 		}, function () {
-// 			handleLocationError(true, infoWindow, map.getCenter());
-// 		});
-// 	} else {
-// 		// Browser doesn't support Geolocation
-// 		handleLocationError(false, infoWindow, map.getCenter());
-// 	}
-// }
-
-// function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-// 	infoWindow.setPosition(pos);
-// 	infoWindow.setContent(browserHasGeolocation ?
-// 		'Error: The Geolocation service failed.' :
-// 		'Error: Your browser doesn\'t support geolocation.');
-// 	infoWindow.open(map);
-// }
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+	infoWindow.setPosition(pos);
+	infoWindow.setContent(browserHasGeolocation ?
+		'Error: The Geolocation service failed.' :
+		'Error: Your browser doesn\'t support geolocation.');
+	infoWindow.open(map);
+}
 
 // // geocoded
 // function initMap() {
@@ -63,7 +65,7 @@
 // 		[rocksRopes.info, rocksRopes.lat, rocksRopes.lng, 1],
 // 	];
 
-// 	var map = new google.maps.Map($('#geocodeMap'), {
+// 	var map = new google.maps.Map($('#map'), {
 // 		zoom: 13,
 // 		center: new google.maps.LatLng(32.2226, 110.9747),
 // 		mapTypeId: google.maps.MapTypeId.ROADMAP
