@@ -5,15 +5,21 @@
                 <fieldset disabled>
                     <div class="row">
                         <div class="col">
-                            <input type="text" id="userFirstName" class="form-control" placeholder="First name">
+                            <input type="text" class="form-control" placeholder="First name">
                         </div>
                         <div class="col">
-                            <input type="text" id="userLastName" class="form-control" placeholder="Last name">
+                            <input type="text" class="form-control" placeholder="Last name">
                         </div>
                         <div class="row">
-                            <input type="text" id="userEmail" class="form-control" placeholder="Email">
+                            <input type="text" class="form-control" placeholder="Email">
                         </div>
                 </fieldset>
+                <div class="row">
+                    <input type="text" class="form-control" id="userName" placeholder="User Name" required>
+                    <div class="invalid-feedback">
+                        Please provide a valid address.
+                    </div>
+                </div>
                 <div class="imageFile">
                     <input type="file" class="imageFile" id="imageFile" required>
                     <label class="imageFileLabel" for="imageFile">Choose file...</label>
@@ -25,6 +31,12 @@
                     </div>
                 </div>
                 <div class="form-row">
+                    <div class="col">
+                        <input type="tel" class="form-control" id="userPhoneNum" placeholder="Phone Number" required>
+                        <div class="invalid-feedback">
+                            Please provide a valid phone number.
+                        </div>
+                    </div>
                     <div class="col">
                         <input type="city" class="form-control" id="userCity" placeholder="City" required>
                         <div class="invalid-feedback">
