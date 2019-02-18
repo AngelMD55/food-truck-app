@@ -27,11 +27,6 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.BOOLEAN,
             defaultValue: '0'
         },
-<<<<<<< HEAD
-        truckLatLng: {
-            type: DataTypes.GEOMETRY,
-            defaultValue: (32.2226, 110.9747)
-=======
         truckLat: {
             type: DataTypes.DECIMAL(10, 8),
             allowNull: false,
@@ -41,7 +36,6 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.DECIMAL(11, 8),
             allowNull: false,
             defaultValue: (110.9747)
->>>>>>> 59a3739c4b62bf8158654b84615b65144cbf0494
         },
     }, {
             freezeTableName: true,

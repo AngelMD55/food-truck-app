@@ -89,9 +89,6 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 // 			}
 // 		})(marker, i));
 // 	}
-<<<<<<< HEAD
-// }
-=======
 // }
 
 $("#vendorCheckIn").on("click", function() {
@@ -118,4 +115,3 @@ $("#vendorCheckIn").on("click", function() {
 
 	console.log(this);
 });
->>>>>>> 59a3739c4b62bf8158654b84615b65144cbf0494
