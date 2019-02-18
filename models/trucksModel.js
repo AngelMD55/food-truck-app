@@ -27,9 +27,15 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.BOOLEAN,
             defaultValue: '0'
         },
-        truckLatLng: {
-            type: DataTypes.GEOMETRY.POINT,
-            defaultValue: (32.2226, 110.9747)
+        truckLat: {
+            type: DataTypes.DECIMAL(10, 8),
+            allowNull: false,
+            defaultValue: (32.2226)
+        },
+        truckLng: {
+            type: DataTypes.DECIMAL(11, 8),
+            allowNull: false,
+            defaultValue: (110.9747)
         },
     }, {
             freezeTableName: true,

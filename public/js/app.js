@@ -89,3 +89,28 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 // 		})(marker, i));
 // 	}
 // }
+
+$("#vendorCheckIn").on("click", function() {
+
+	let pos = {
+		allowed: false
+	};
+	
+	async function getLocation() {
+		if (navigator.geolocation) {
+			let data = await navigator.geolocation.getCurrentPosition(showPosition)
+			return data;
+		}
+	}
+	function showPosition(position) {
+		let lat = position.coords.latitude.toFixed(0);
+		let lng = position.coords.longitude.toFixed(0);
+		pos = {
+			allowed: true,
+			lat,
+			lng
+		};
+	};
+
+	console.log(this);
+});
