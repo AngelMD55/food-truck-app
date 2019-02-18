@@ -1,18 +1,30 @@
 <style>
-    geoMap{
-        height: 200px,
-        width: 100%
+    #map{
+        height: 400px;
+        width: 100%;
+        {{!-- background-color: grey; --}}
     }
 
 </style>
-
+{{!-- NavBar --}}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="./userv">Home <span
+                    class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="./userp">Profile</a>
+            <a class="nav-item nav-link" href="#">Contact Us</a>
+        </div>
+    </div>
+</nav> 
+{{!-- Navbar Ends --}}
+<br>
+<br>
 {{!-- container for google maps --}}
 <div class="container">
     <div class="row mb-3">
         {{!-- updated id to geocodeMap --}}
-        <div class= "geoMap"id="map">
-
-        </div>
+        <div class="geoMap" id="map"></div>
     </div>
 </div>
 

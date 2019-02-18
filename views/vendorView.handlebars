@@ -1,8 +1,14 @@
+<style>
+    #map{
+        height: 400px;
+        width: 100%;
+    }
+</style>
 {{!-- NavBar --}}
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="./truckView.handlebars">Home <span
+            <a class="nav-item nav-link active" href="./vendorView.handlebars">Home <span
                     class="sr-only">(current)</span></a>
             <a class="nav-item nav-link" href="./vendorProfile.handlebars">Profile</a>
             <a class="nav-item nav-link" href="">Contact Us</a>
@@ -66,9 +72,7 @@
         {{!-- Google Map Area --}}
         <div class="col">
             <div class="row mb-3">
-                <div id="googleMap">
-                    <img src="https://imgplaceholder.com/640x360" alt="image placeholder for goolemaps">
-                </div>
+                <div id="map"></div>
             </div>
         </div>
     </div>

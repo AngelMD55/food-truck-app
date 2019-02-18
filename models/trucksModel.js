@@ -28,7 +28,7 @@ module.exports = function (sequelize, DataTypes) {
             defaultValue: '0'
         },
         truckLatLng: {
-            type: DataTypes.GEOMETRY.POINT,
+            type: DataTypes.GEOMETRY,
             defaultValue: (32.2226, 110.9747)
         },
     }, {
