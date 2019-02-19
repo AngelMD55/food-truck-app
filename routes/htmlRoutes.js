@@ -11,6 +11,7 @@ module.exports = function(app) {
     });
   // Load user view page
   app.get("/userv", function(req, res){
+    console.log(db.User[req.params.id])
     res.render("userView")
   });
   // Load vendor profile page
