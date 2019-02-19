@@ -35,9 +35,10 @@ getPosition();
 
 // geolocation
 var map, infoWindow;
+
 function initMap() {
-	map = new google.maps.Map(document.getElementById('map'), {
-		center: { lat: 32.2226, lng: 110.9747 },
+	map = new google.maps.Map(document.getElementById("map"), {
+		center: {lat: 32.2226, lng: 110.9747},
 		zoom: 6
 	});
 	console.log(map);
@@ -65,7 +66,7 @@ function initMap() {
 		// Browser doesn't support Geolocation
 		handleLocationError(false, infoWindow, map.getCenter());
 	}
-};
+}
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 	infoWindow.setPosition(pos);

@@ -1,0 +1,48 @@
+{{> userNavbar/userNavbar}}
+<div class="container">
+    <div class="card">
+        <div class="card-header text-center">
+            <h3>Contact Us</h3>
+        </div>
+        <div class="card-body" <form action="https://mailthis.to/you@mail.com" method="POST"
+            encType="multipart/form-data">
+            <div class="form-group">
+                <input type="text" class="form-control" name="name" placeholder="Your name">
+            </div>
+            <br>
+            <div class="form-group">
+                <input type="email" class="form-control"  name="_replyto" placeholder="Your email">
+            </div>
+            <br>
+            <div class="form-group">
+                <textarea name="mesclass" class="form-control" placeholder="Enter your message here"></textarea>
+            </div>
+            <br>
+            <div class="form-group">
+                <input type="file" class="form-control" name="file" placeholder="Attachments (optional)">
+            </div>
+            <br>
+            <div class="form-row">
+                <input type="submitclass" class="btn btn-success" value="Send">
+                </div>
+            </form>
+        </div>
+    </div>
+    <hr>
+    <br>
+    <div class="container">
+        <p>Tucson, AZ is a great place for year round fun in the sun and enjoying the great food that congregates here
+            is
+            one of those great experiences. If you are looking for locally made, one of a kind meals or tastes from far
+            off
+            places, then you have found the right place to find all the tastes that you crave. We are working to help
+            local
+            business showcase their great flavors while you find what you want to eat for whatever mood you are in. All
+            of
+            our food trucks are available to help cater any event that you might have across all of Tucson and some
+            surrounding areas. You can contact the food trucks directly or <a href="./contactus">contact us</a> to help
+            schedule your event for you.</p>
+    </div>
+</div>
+<br>
+{{> footer/footer}}

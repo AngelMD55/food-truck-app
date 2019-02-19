@@ -14,6 +14,10 @@ module.exports = function(app) {
     console.log(db.User[req.params.id])
     res.render("userView")
   });
+  // Load user contactus page
+  app.get("/userc", function(req, res){
+    res.render("userContactUs")
+  });
   // Load vendor profile page
   app.get("/vendorp", function(req, res){
     res.render("vendorProfile")
@@ -21,6 +25,10 @@ module.exports = function(app) {
   // Load vendor view page
   app.get("/vendorv", function(req, res){
     res.render("vendorView")
+  });
+  // Load vendor contactus page
+  app.get("/vendorc", function(req, res){
+    res.render("vendorContactUs")
   });
   // Load 404 page
   app.get("/404", function(req, res){

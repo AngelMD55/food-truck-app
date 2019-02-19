@@ -1,73 +1,80 @@
-{{!-- NavBar --}}
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="./truckView.handlebars">Home <span
-                    class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="./vendorProfile.handlebars">Profile</a>
-            <a class="nav-item nav-link" href="">Contact Us</a>
-        </div>
-    </div>
-</nav> 
-{{!-- Navbar Ends --}}
+<style>
+    #map {
+        height: 400px;
+        width: 100%;
+    }
+</style>
+{{> vendorNavbar/vendorNavbar}}
 {{!-- Main Vendor Info Area --}}
 <div class="container">
-    <h1 class="truckName" id="truckName">TRUCK NAME HERE</h1>
-    <br>
-    <h3>Truck Location</h3>
-    <form class="form-inline">
-        <div class="form-row">
-            <div class="col-md-4">
-                <input type="address" class="form-control" id="userAddress" placeholder="Address" required>
-                <div class="invalid-feedback">
-                    Please provide a valid address.
-                </div>
-            </div>
-            <div class="col-md-4">
-                <input type="city" class="form-control" id="vendorCity" placeholder="City" required>
-                <div class="invalid-feedback">
-                    Please provide a valid city.
-                </div>
-            </div>
-            <div class="col-md-4">
-                <input type="zip" class="form-control" id="vendorZip" placeholder="Zip Code" required>
-                <div class="invalid-feedback">
-                    Please provide a valid zip.
-                </div>
-            </div>
+    <div class="card">
+        <div class="card-header text-center">
+            <h1 class="truckName" id="truckName">TRUCK NAME HERE</h1>
         </div>
-    </form>
-    <br>
-    <h3>Auto Check-in:</h3>
-    <button class="btn btn-success" type="submit" id="vendorCheckIn">Check-In</button>
-    <br>
-    <br>
-</div>
-{{!-- Vendor Info Area Ends --}}
-{{!-- Search and Map Area --}}
-<div class="container">
-    <h3>Search:</h3>
-    <div class="row">
-        <div class="col-md-4">
-            <form class="form-inline">
-            <select id="searchBy">
-                <option value="" disabled selected>Search option</option>
-                <option value="foodCategory1">Category</option>
-                <option value="truckName">Truck Name</option>
-            </select>
-            <input type="search" class="form-control" id="categorySearch" placeholder="Name or Category" required>
-            </form>
-            {{!-- Area to show search results --}}
-        <div class="row">
-            <div id="searchResults"></div>
+        <br>
+        <div class="card-body text-center">
+            <div class="card-header">
+                <h3>Truck Location</h3>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <input type="address" class="form-control" id="userAddress" placeholder="Address" required>
+                            <div class="invalid-feedback">
+                                Please provide a valid address.
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="city" class="form-control" id="vendorCity" placeholder="City" required>
+                            <div class="invalid-feedback">
+                                Please provide a valid city.
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="zip" class="form-control" id="vendorZip" placeholder="Zip Code" required>
+                            <div class="invalid-feedback">
+                                Please provide a valid zip.
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <br>
+            <div class="card-header">
+                <h3>Auto Check-in:</h3>
+            </div>
+            <div class="card-body">
+                <button class="btn btn-success" type="submit" id="vendorCheckIn">Check-In</button>
+            </div>
+            <br>
         </div>
-        {{!-- End Search Results Area --}}
-        </div>
-        {{!-- Google Map Area --}}
-        <div class="col">
-            <div class="row mb-3">
-                <div id="googleMap">
-                    <img src="https://imgplaceholder.com/640x360" alt="image placeholder for goolemaps">
+        {{!-- Vendor Info Area Ends --}}
+        {{!-- Search and Map Area --}}
+        <div class="container">
+            <h3>Search:</h3>
+            <div class="row">
+                <div class="col-md-4">
+                    <form class="form-inline">
+                        <select id="searchBy">
+                            <option value="" disabled selected>Search option</option>
+                            <option value="foodCategory1">Category</option>
+                            <option value="truckName">Truck Name</option>
+                        </select>
+                        <input type="search" class="form-control" id="categorySearch" placeholder="Name or Category"
+                            required>
+                    </form>
+                    {{!-- Area to show search results --}}
+                    <div class="row">
+                        <div id="searchResults"></div>
+                    </div>
+                    {{!-- End Search Results Area --}}
+                </div>
+                {{!-- Google Map Area --}}
+                <div class="col">
+                    <div class="row mb-3">
+                        <div id="map"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -75,7 +82,13 @@
 </div>
 <hr>
 <div class="container">
-<p>Tucson, AZ is a great place for year round fun in the sun and enjoying the great food that congregates here is one of those great experiences.</p>
+    <p>Tucson, AZ is a great place for year round fun in the sun and enjoying the great food that congregates here is
+        one of those great experiences. If you are looking for locally made, one of a kind meals or tastes from far off
+        places, then you have found the right place to find all the tastes that you crave. We are working to help local
+        business showcase their great flavors while you find what you want to eat for whatever mood you are in. All of
+        our food trucks are available to help cater any event that you might have across all of Tucson and some
+        surrounding areas. You can contact the food trucks directly or <a href="./contactus">contact us</a> to help
+        schedule your event for you.</p>
 </div>
 <br>
 <footer>
