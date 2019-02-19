@@ -27,13 +27,18 @@ $(document).ready(function () {
       userType: userType,
       userEmail: userEmail
     }
-    console.log(newUserSignUp);
+    console.log(newUserSignUp.userType);
     $.ajax({
       method: "POST",
       url: "/api/users",
       data: newUserSignUp
     }).then(function () {
+      alert("wait");
+      if(newUserSignUp.userType === "eater"){
       window.location.replace("/userp");
+      }else{
+        window.location.replace("/vendorp")
+      }
     });
   });
 
