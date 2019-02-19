@@ -12,9 +12,16 @@ module.exports = function(app){
       userPassword: req.body.userPassword,
       userType: req.body.userType,
       userEmail: req.body.userEmail
+<<<<<<< HEAD
+    }).then(function (dbUser) {
+      // console.log("apiRoutes----" + res.body)
+      res.json(dbUser);
+    });
+=======
     }).then(
       res.json({id: req.params.id})
     );
+>>>>>>> master
   });
 
   app.get("/api/users/", function(req, res){
@@ -30,7 +37,7 @@ module.exports = function(app){
     });
   });
 
-  app.put("/api/users/", function(req, res) {
+  app.put("/api/users/", function (req, res) {
     db.User.update({
       userPhoneNum: req.body.userPhoneNum,
       userAddress: req.body.userAddress,
@@ -39,6 +46,10 @@ module.exports = function(app){
       userZip: req.body.userZip,
       userGender: req.body.userGender,
       userBday: req.body.userBday
+<<<<<<< HEAD
+    }).then(function (dbUser) {
+      res.json(dbUser);
+=======
     },{
       where : {
         id: newId
@@ -46,6 +57,7 @@ module.exports = function(app){
     }).then(function(data){
       console.log(data);
       return res.json(data);
+>>>>>>> master
     });
   });
 
@@ -56,12 +68,36 @@ module.exports = function(app){
   //     console.log("HERE" + res);
   //   });
   // });
+<<<<<<< HEAD
+  // Delete an example by id
+=======
 
 };
 
     // Delete an example by id
+>>>>>>> master
   // app.delete("/api/examples/:id", function(req, res) {
   //   db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
   //     res.json(dbExample);
   //   });
   // });
+
+  app.put("/api/checkintrucks/", function (req, res) {
+    db.trucks.update({
+      truckLive: req.body.truckLive,
+    }, {
+        where: {
+          truckName: req.body.truckName
+        }
+      }).then(function (dbtrucks) {
+        res.json(dbtrucks);
+      });
+    
+  });
+};
+
+
+
+
+
+
