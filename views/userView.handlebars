@@ -1,9 +1,19 @@
+<style>
+    #map{
+        height: 400px;
+        width: 100%;
+        {{!-- background-color: grey; --}}
+    }
+
+</style>
+{{> userNavbar/userNavbar}}
+<br>
+<br>
 {{!-- container for google maps --}}
 <div class="container">
     <div class="row mb-3">
-        <div id="googleMap">
-            <img src="https://imgplaceholder.com/640x360" alt="image placeholder for goolemaps">
-        </div>
+        {{!-- updated id to geocodeMap --}}
+        <div class="geoMap" id="map"></div>
     </div>
 </div>
 
@@ -30,3 +40,16 @@
         </div>
     </div>
 </div>
+<hr>
+<div class="container">
+    <p>Tucson, AZ is a great place for year round fun in the sun and enjoying the great food that congregates here is
+        one of those great experiences. If you are looking for locally made, one of a kind meals or tastes from far off
+        places, then you have found the right place to find all the tastes that you crave. We are working to help local
+        business showcase their great flavors while you find what you want to eat for whatever mood you are in. All of
+        our food trucks are available to help cater any event that you might have across all of Tucson and some
+        surrounding areas. You can contact the food trucks directly or <a href="./contactus">contact us</a> to help
+        schedule your event for you.</p>
+</div>
+<br>
+{{> footer/footer}}
+
