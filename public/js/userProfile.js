@@ -2,7 +2,6 @@ $(document).ready(function () {
   let user;
   let firstName;
   let lastName;
-  let userName;
   let userPassword;
   let userType;
   let userEmail;
@@ -13,7 +12,6 @@ $(document).ready(function () {
     //Passing values to variables
     firstName = $("#userFirstName").val().trim(),
     lastName = $("#userLastName").val().trim(),
-    userName = $("#userName").val().trim(),
     userPassword = $("#password").val().trim(),
     userType = $("input[name='type']:checked").val(),
     userEmail = $("#userEmail").val().trim()
@@ -22,7 +20,6 @@ $(document).ready(function () {
     let newUserSignUp = {
       firstName: firstName,
       lastName: lastName,
-      userName: userName,
       userPassword: userPassword,
       userType: userType,
       userEmail: userEmail
@@ -54,6 +51,7 @@ $(document).ready(function () {
     event.preventDefault();
 
     let updateUserInfo = {
+      userName : $("#userName").val().trim(),
       userPhoneNum: $("#userPhoneNum").val().trim(),
       userAddress: $("#userAddress").val().trim(),
       userCity: $("#userCity").val().trim(),

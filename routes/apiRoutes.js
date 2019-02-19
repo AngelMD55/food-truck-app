@@ -8,7 +8,6 @@ module.exports = function(app){
     db.User.create({
       firstName: req.body.firstName,
       lastName: req.body.lastName,
-      userName: req.body.userName,
       userPassword: req.body.userPassword,
       userType: req.body.userType,
       userEmail: req.body.userEmail
@@ -39,6 +38,7 @@ module.exports = function(app){
 
   app.put("/api/users/", function (req, res) {
     db.User.update({
+      userName: req.body.userName,
       userPhoneNum: req.body.userPhoneNum,
       userAddress: req.body.userAddress,
       userCity: req.body.userCity,
