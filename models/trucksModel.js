@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-    const truck = sequelize.define('trucks', {
+    const Truck = sequelize.define('Truck', {
         truckName: {
             type: DataTypes.STRING,
             allowNull: false
@@ -10,7 +10,6 @@ module.exports = function (sequelize, DataTypes) {
         },
         priceRange:{
             type: DataTypes.CHAR(4),
-
             allowNull: false
         },
         foodCategory1: {
@@ -41,5 +40,5 @@ module.exports = function (sequelize, DataTypes) {
             freezeTableName: true,
         });
 
-    return truck;
+    return Truck;
 }
