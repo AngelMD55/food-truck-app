@@ -17,7 +17,7 @@ module.exports = function (sequelize, DataTypes) {
     },
     userName: {
       type: DataTypes.STRING,
-      allowNull: false
+      defaultValue: "User Name"
     },
     userPassword: {
       type: DataTypes.STRING,
