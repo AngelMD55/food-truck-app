@@ -57,9 +57,9 @@ module.exports = function(app){
       truckName: req.body.truckName,
       priceRange: req.body.priceRange,
       // userName: req.body.userName,
-      // foodCategory1: req.body.foodCategory1,
-      // foodCategory2: req.body.foodCategory2,
-      // foodCategory3: req.body.foodCategory3
+      foodCategory1: req.body.foodCategory1,
+      foodCategory2: req.body.foodCategory2,
+      foodCategory3: req.body.foodCategory3
     }).then(
       res.json({id: req.params.id})
     );
@@ -74,7 +74,7 @@ module.exports = function(app){
       userCity: req.body.userCity,
       userState: req.body.userState,
       userZip: req.body.userZip,
-      // userGender: req.body.userGender,
+      userGender: req.body.userGender,
       userBday: req.body.userBday
     },{
       where : {

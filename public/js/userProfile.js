@@ -72,10 +72,22 @@ $(document).ready(function () {
       window.location.replace("/userv");
     })
   })
-
+   
   //on click function to create truck table and update user table
   $("#vendorSubmit").on("click", function(event){
     event.preventDefault();
+
+    //Getting food category 
+
+    let allFoodCategories = document.querySelectorAll('input[name="foodCategory"]:checked');
+    let foodCategories = [];
+
+    for (let i = 0; i < allFoodCategories.length; i++){
+      foodCategories.push(allFoodCategories[i].value);
+    }
+
+    console.log(foodCategories);
+    console.log("foodCat1 " + foodCategories[0]);
 
     let updateTruckUserInfo = {
       userPhoneNum: $("#truckPhoneNum").val().trim(),
@@ -83,12 +95,15 @@ $(document).ready(function () {
       userCity: $("#truckCity").val().trim(),
       userState: $("#truckState").val().trim(),
       userZip: $("#truckZip").val().trim(),
-      userGender: $("input[name='gender']:checked").val(),
+      userGender: $("input[name='vgender']:checked").val(),
       userBday: $("#birthDateVendor").val().trim(),
     }
 
     let newTruckVendor = {
-      truckName: $("#truckName").val().trim()
+      truckName: $("#truckName").val().trim(),
+      foodCategory1: foodCategories[0],
+      foodCategory2: foodCategories[1],
+      foodCategory3: foodCategories[2]
       // userName: $("#userName").val().trim(),
     }
     console.log(newTruckVendor);
@@ -103,6 +118,7 @@ $(document).ready(function () {
           url: "/api/users",
           data: updateTruckUserInfo
         }).then(function (data) {
+          alert("wait")
          window.location.replace("/vendorv")
         });
     });
