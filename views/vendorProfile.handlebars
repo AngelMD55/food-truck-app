@@ -20,13 +20,13 @@
                     <br>
                     <div class="row">
                         <div class="col-md-6">
-                            <input type="truckName" class="form-control" placeholder="Food Truck Name" required>
+                            <input type="truckName" class="form-control" placeholder="Food Truck Name" id="truckName" required>
                             <div class="invalid-feedback">
                                 Please provide your Food Truck's name.
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <input type="phoneNumber" class="form-control" placeholder="123-456-7890" required>
+                            <input type="phoneNumber" class="form-control" placeholder="123-456-7890" id= "truckPhoneNum" required>
                             <div class="invalid-feedback">
                                 Please provide a valid phone number.
                             </div>
@@ -128,13 +128,13 @@
                     <br>
                     <div class="row">
                         <div class="col-md-6">
-                            <input type="address" class="form-control" placeholder="Address" required>
+                            <input type="address" class="form-control" placeholder="Address" id="truckUserAdress" required>
                             <div class="invalid-feedback">
                                 Please provide a valid address.
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <input type="city" class="form-control" placeholder="City" required>
+                            <input type="city" class="form-control" placeholder="City" id="truckCity" required>
                             <div class="invalid-feedback">
                                 Please provide a valid city.
                             </div>
@@ -143,14 +143,14 @@
                     <br>
                     <div class="row">
                         <div class="col-md-6">
-                            <input type="state" class="form-control" placeholder="State" required>
+                            <input type="state" class="form-control" placeholder="State" id="truckState" required>
                             <div class="invalid-feedback">
                                 Please provide a valid state.
                             </div>
                         </div>
                         <br>
                         <div class="col-md-6">
-                            <input type="zip" class="form-control" placeholder="Zip Code" required>
+                            <input type="zip" class="form-control" placeholder="Zip Code" id="truckZip"required>
                             <div class="invalid-feedback">
                                 Please provide a valid zip.
                             </div>
@@ -188,7 +188,7 @@
                         </div>
                         <div class="card-body">
                             <div class="form-group">
-                                <input type="date" id="birthDate" class="form-control">
+                                <input type="date" id="birthDateVendor" class="form-control">
                             </div>
                         </div>
                     </div>
@@ -205,7 +205,7 @@
                         </div>
                     </div>
                 </div>
-                <button type="button" class="btn btn-success">Submit</button>
+                <button type="button" class="btn btn-success" id="vendorSubmit">Submit</button>
             </div>
         </div>
     </form>
