@@ -80,24 +80,11 @@
                 <div class="card">
                     <div class="card-body text-center">
                         <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-check">
-                                    <input class="male" type="radio" id="customer" value="customer" required>
-                                    <label class="male" for="male">Male</label>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-check">
-                                    <input class="female" type="radio" id="female" value="female" required>
-                                    <label class="female" for="female">Female</label>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-check">
-                                    <input class="other" type="radio" id="other" value="other" required>
-                                    <label class="other" for="other">Prefer not to Answer</label>
-                                </div>
-                            </div>
+                            <form>
+                                <input type="radio" name="gender" value="male"> Male
+                                <input type="radio" name="gender" value="female"> Female
+                                <input type="radio" name="gender" value="other"> Prefer not to Answer
+                            </form>
                         </div>
                     </div>
                 </div>
