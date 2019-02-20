@@ -6,6 +6,7 @@ $(document).ready(function () {
   let userType;
   let userEmail;
 
+  // onclick function to get values from users input
   $("#signUpSubmit").on("click", function (event) {
     event.preventDefault();
 
@@ -25,12 +26,12 @@ $(document).ready(function () {
       userEmail: userEmail
     }
     console.log(newUserSignUp.userType);
+    //ajax to create users table
     $.ajax({
       method: "POST",
       url: "/api/users",
       data: newUserSignUp
     }).then(function () {
-      alert("wait");
       if(newUserSignUp.userType === "eater"){
       window.location.replace("/userp");
       }else{
@@ -39,6 +40,7 @@ $(document).ready(function () {
     });
   });
 
+  // get route to get api data
   function getID(){
     $.get("/api/users", function(data){
       user = data;
@@ -47,6 +49,7 @@ $(document).ready(function () {
 
   getID();
 
+    // onclick function to get values from user input and update database
   $("#userSubmit").on("click", function (event) {
     event.preventDefault();
 
@@ -66,7 +69,42 @@ $(document).ready(function () {
       url: "/api/users/",
       data: updateUserInfo
     }).then(function (data) {
-      window.location.replace(`/userv/${data.id}`);
+      window.location.replace("/userv");
     })
   })
+
+  //on click function to create truck table and update user table
+  $("#vendorSubmit").on("click", function(event){
+    event.preventDefault();
+
+    let updateTruckUserInfo = {
+      userPhoneNum: $("#truckPhoneNum").val().trim(),
+      userAddress: $("#truckUserAdress").val().trim(),
+      userCity: $("#truckCity").val().trim(),
+      userState: $("#truckState").val().trim(),
+      userZip: $("#truckZip").val().trim(),
+      userGender: $("input[name='gender']:checked").val(),
+      userBday: $("#birthDateVendor").val().trim(),
+    }
+
+    let newTruckVendor = {
+      truckName: $("#truckName").val().trim()
+      // userName: $("#userName").val().trim(),
+    }
+    console.log(newTruckVendor);
+
+    $.ajax({
+      method: "POST",
+      url: "/api/trucks",
+      data: newTruckVendor,
+    }).then(function(){
+        $.ajax({
+          method: "PUT",
+          url: "/api/users",
+          data: updateTruckUserInfo
+        }).then(function (data) {
+         window.location.replace("/vendorv")
+        });
+    });
+  });
 });

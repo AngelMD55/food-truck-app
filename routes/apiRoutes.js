@@ -11,18 +11,12 @@ module.exports = function(app){
       userPassword: req.body.userPassword,
       userType: req.body.userType,
       userEmail: req.body.userEmail
-<<<<<<< HEAD
-    }).then(function (dbUser) {
-      // console.log("apiRoutes----" + res.body)
-      res.json(dbUser);
-    });
-=======
     }).then(
       res.json({id: req.params.id})
     );
->>>>>>> master
   });
 
+  //Route to get info from users table api
   app.get("/api/users/", function(req, res){
     db.User.findAll({
       limit: 1,
@@ -36,6 +30,7 @@ module.exports = function(app){
     });
   });
 
+  // Route to update users table api
   app.put("/api/users/", function (req, res) {
     db.User.update({
       userName: req.body.userName,
@@ -46,10 +41,6 @@ module.exports = function(app){
       userZip: req.body.userZip,
       userGender: req.body.userGender,
       userBday: req.body.userBday
-<<<<<<< HEAD
-    }).then(function (dbUser) {
-      res.json(dbUser);
-=======
     },{
       where : {
         id: newId
@@ -57,30 +48,45 @@ module.exports = function(app){
     }).then(function(data){
       console.log(data);
       return res.json(data);
->>>>>>> master
     });
   });
 
-  // Get all examples
-  // app.get("/api/users", function (req, res) {
-  //   db.User.findAll({}).then(function (dbUser) {
-  //     res.json(dbUser);
-  //     console.log("HERE" + res);
-  //   });
-  // });
-<<<<<<< HEAD
-  // Delete an example by id
-=======
+  // POST route to create trucks api table
+  app.post("/api/trucks", function(req, res) {
+    db.Truck.create({
+      truckName: req.body.truckName,
+      priceRange: req.body.priceRange,
+      // userName: req.body.userName,
+      // foodCategory1: req.body.foodCategory1,
+      // foodCategory2: req.body.foodCategory2,
+      // foodCategory3: req.body.foodCategory3
+    }).then(
+      res.json({id: req.params.id})
+    );
+  });
 
-};
+    // Route to update truck table api
+  app.put("/api/users/", function (req, res) {
+    db.User.update({
+      // userName: req.body.userName,
+      userPhoneNum: req.body.userPhoneNum,
+      userAddress: req.body.userAddress,
+      userCity: req.body.userCity,
+      userState: req.body.userState,
+      userZip: req.body.userZip,
+      // userGender: req.body.userGender,
+      userBday: req.body.userBday
+    },{
+      where : {
+        id: newId
+      }
+    }).then(function(data){
+      console.log(data);
+      return res.json(data);
+    });
+  });
 
-    // Delete an example by id
->>>>>>> master
-  // app.delete("/api/examples/:id", function(req, res) {
-  //   db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-  //     res.json(dbExample);
-  //   });
-  // });
+
 
   app.put("/api/checkintrucks/", function (req, res) {
     db.trucks.update({
