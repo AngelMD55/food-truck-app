@@ -76,38 +76,88 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 	infoWindow.open(map);
 }
 
-// // geocoded
-// function initMap() {
+// using places api with search autocomplete
+function initMap() {
+	var map = new google.maps.Map(document.getElementById('map'), {
+		center: { lat: 32.2341679, lng: -110.9465769 },
+		zoom: 13
+	});
+	var input = document.getElementById('vendorAddress');
 
-// 	var azStadium = {
-// 		info: '<strong>Arizona Stadium</strong><br>\
-// 					1 N National Championship Dr, Tucson, AZ 85719<br>\
-// 					<a href="https://goo.gl/maps/56oQf7aEkNU2">Get Directions</a>',
-// 		lat: 32.228948,
-// 		lng: 110.948254
-// 	};
+	map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
-// 	var rocksRopes = {
-// 		info: '<strong>Rocks n Ropes</strong><br>\
-// 					330 S Toole Ave #400, Tucson, AZ 85701<br>\
-// 					<a href="https://goo.gl/maps/MwM9CgQEEzq">Get Directions</a>',
-// 		lat: 32.217654,
-// 		lng: 110.960857
-// 	};
+	var autocomplete = new google.maps.places.Autocomplete(input);
+	autocomplete.bindTo('bounds', map);
 
-// 	var truckLocations = [
-// 		[azStadium.info, azStadium.lat, azStadium.lng, 0],
-// 		[rocksRopes.info, rocksRopes.lat, rocksRopes.lng, 1],
-// 	];
+	var infowindow = new google.maps.InfoWindow();
+	var marker = new google.maps.Marker({
+		map: map,
+		anchorPoint: new google.maps.Point(0, -29)
+	});
 
-// 	var map = new google.maps.Map($('#map'), {
-// 		zoom: 13,
-// 		center: new google.maps.LatLng(32.2226, 110.9747),
-// 		mapTypeId: google.maps.MapTypeId.ROADMAP
-// 	});
+	autocomplete.addListener('place_changed', function () {
+		infowindow.close();
+		marker.setVisible(false);
+		var place = autocomplete.getPlace();
 
-// 	var infowindow = new google.maps.InfoWindow({});
+		/* if place has a geometry, then place it on a map. */
+		if (place.geometry.viewport) {
+			map.fitBounds(place.geometry.viewport);
+		} else {
+			map.setCenter(place.geometry.location);
+			map.setZoom(17);
+		}
+		marker.setIcon(({
+			url: place.icon,
+			size: new google.maps.Size(71, 71),
+			origin: new google.maps.Point(0, 0),
+			anchor: new google.maps.Point(17, 34),
+			scaledSize: new google.maps.Size(35, 35)
+		}));
+		marker.setPosition(place.geometry.location);
 
+		marker.setVisible(true);
+
+		var address = '';
+		if (place.address_components) {
+			address = [
+				(place.address_components[0] && place.address_components[0].short_name || ''),
+				(place.address_components[1] && place.address_components[1].short_name || ''),
+				(place.address_components[2] && place.address_components[2].short_name || '')
+			].join(' ');
+		}
+
+		checkInLocation = [{
+			lat: place.geometry.location.lat(),
+			lng: place.geometry.location.lng()
+		}];
+
+		var checkInBtn = '<button id= "checkIn>Check-In</button>';
+		google.maps.event.addListener(marker, 'click', function () {
+			infowindow.setContent(address + checkInBtn);
+			infowindow.open(map, marker);
+		});
+
+		google.maps.event.addListener(infowindow, 'domready', function () {
+			google.maps.event.addDomListener(checkInBtn, 'click', function () {
+				console.log(checkInLocation)
+			});
+		});
+		
+		// infowindow = new google.maps.InfoWindow({
+		//     content: " "
+		// });
+		// infowindow.open(map, marker);
+
+		// infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address + '<br><div> </div>' + '<br><button id= "checkIn>Check-In</button>');
+		// infowindow.open(map, marker)
+
+		// console.log(truckLocation);
+	});
+
+}
+
+// to loop through trucklocations and place multiple markers
 // 	var marker, i;
 
 // 	for (i = 0; i < truckLocations.length; i++) {
