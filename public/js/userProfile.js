@@ -122,4 +122,8 @@ $(document).ready(function () {
         });
     });
   });
+
+  $("#vendorDescription").keyup(function(){
+    $("#count").text("Characters left: " + (540 - $(this).val().length));
+  });
 });
