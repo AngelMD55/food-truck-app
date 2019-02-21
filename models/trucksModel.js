@@ -6,21 +6,26 @@ module.exports = function (sequelize, DataTypes) {
         },
         userName: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            defaultValue: 'userName'
         },
         priceRange:{
             type: DataTypes.CHAR(4),
-            allowNull: false
+            allowNull: false,
+            defaultValue: '0'
         },
         foodCategory1: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            defaultValue: 'cat1'
         },
         foodCategory2: {
             type: DataTypes.STRING
+            // defaultValue: 'cat2'
         },
         foodCategory3: {
             type: DataTypes.STRING
+            // defaultValue: 'cat3'
         },
         truckLive:{
             type: DataTypes.BOOLEAN,

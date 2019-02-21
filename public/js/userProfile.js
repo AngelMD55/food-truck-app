@@ -6,6 +6,7 @@ $(document).ready(function () {
   let userType;
   let userEmail;
 
+  // onclick function to get values from users input
   $("#signUpSubmit").on("click", function (event) {
     event.preventDefault();
 
@@ -25,31 +26,33 @@ $(document).ready(function () {
       userEmail: userEmail
     }
     console.log(newUserSignUp.userType);
+    //ajax to create users table
     $.ajax({
       method: "POST",
       url: "/api/users",
       data: newUserSignUp
-    }).then(function () {
-      alert("wait");
+    }).then(function (res) {
       if(newUserSignUp.userType === "eater"){
-      window.location.replace("/userp");
+      window.location.replace("/userp/" + res.id);
       }else{
-        window.location.replace("/vendorp")
+        window.location.replace("/vendorp/" + res.id);
       }
     });
   });
 
-  function getID(){
-    $.get("/api/users", function(data){
-      user = data;
-    })
-  }
+  // // get route to get api data
+  // function getID(){
+  //   $.get("/api/users", function(data){
+  //     user = data;
+  //   })
+  // }
 
-  getID();
+  // getID();
 
+    // onclick function to get values from user input and update database
   $("#userSubmit").on("click", function (event) {
     event.preventDefault();
-
+    console.log("Running")
     let updateUserInfo = {
       userName : $("#userName").val().trim(),
       userPhoneNum: $("#userPhoneNum").val().trim(),
@@ -63,10 +66,64 @@ $(document).ready(function () {
     // console.log(updateUserInfo);
     $.ajax({
       method: "PUT",
-      url: "/api/users/",
+      url: "/api/users/" + $("#id").val(),
       data: updateUserInfo
-    }).then(function (data) {
-      window.location.replace(`/userv/${data.id}`);
+    }).then(function (res) {
+      window.location.replace("/userv/" + $("#id").val(),);
     })
   })
+   
+  //on click function to create truck table and update user table
+  $("#vendorSubmit").on("click", function(event){
+    event.preventDefault();
+
+    //Getting food category 
+
+    let allFoodCategories = document.querySelectorAll('input[name="foodCategory"]:checked');
+    let foodCategories = [];
+
+    for (let i = 0; i < allFoodCategories.length; i++){
+      foodCategories.push(allFoodCategories[i].value);
+    }
+
+    console.log(foodCategories);
+    console.log("foodCat1 " + foodCategories[0]);
+
+    let updateTruckUserInfo = {
+      userPhoneNum: $("#truckPhoneNum").val().trim(),
+      userAddress: $("#truckUserAdress").val().trim(),
+      userCity: $("#truckCity").val().trim(),
+      userState: $("#truckState").val().trim(),
+      userZip: $("#truckZip").val().trim(),
+      userGender: $("input[name='vgender']:checked").val(),
+      userBday: $("#birthDateVendor").val().trim(),
+    }
+
+    let newTruckVendor = {
+      truckName: $("#truckName").val().trim(),
+      foodCategory1: foodCategories[0],
+      foodCategory2: foodCategories[1],
+      foodCategory3: foodCategories[2]
+      // userName: $("#userName").val().trim(),
+    }
+    console.log(newTruckVendor);
+
+    $.ajax({
+      method: "POST",
+      url: "/api/trucks",
+      data: newTruckVendor,
+    }).then(function(){
+        $.ajax({
+          method: "PUT",
+          url: "/api/truckusers/"  + $("#idv").val(),
+          data: updateTruckUserInfo
+        }).then(function (res) {
+         window.location.replace("/vendorv/" + $("#idv").val(),)
+        });
+    });
+  });
+
+  $("#vendorDescription").keyup(function(){
+    $("#count").text("Characters left: " + (540 - $(this).val().length));
+  });
 });
