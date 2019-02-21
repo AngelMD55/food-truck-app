@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-    const truck = sequelize.define('trucks', {
+    const Truck = sequelize.define('Truck', {
         truckName: {
             type: DataTypes.STRING,
             allowNull: false
@@ -10,7 +10,6 @@ module.exports = function (sequelize, DataTypes) {
         },
         priceRange:{
             type: DataTypes.CHAR(4),
-
             allowNull: false
         },
         foodCategory1: {
@@ -20,19 +19,26 @@ module.exports = function (sequelize, DataTypes) {
         foodCategory2: {
             type: DataTypes.STRING
         },
-        foodCategory1: {
+        foodCategory3: {
             type: DataTypes.STRING
-        },
-        foodCategory1:{
-            type: DataTypes.STRING           
         },
         truckLive:{
             type: DataTypes.BOOLEAN,
             defaultValue: '0'
-        }
+        },
+        truckLat: {
+            type: DataTypes.DECIMAL(10, 8),
+            allowNull: false,
+            defaultValue: (32.2226)
+        },
+        truckLng: {
+            type: DataTypes.DECIMAL(11, 8),
+            allowNull: false,
+            defaultValue: (110.9747)
+        },
     }, {
             freezeTableName: true,
         });
 
-    return truck;
+    return Truck;
 }

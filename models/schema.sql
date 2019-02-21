@@ -3,4 +3,3 @@ CREATE DATABASE foodtruckapp_DB;
 
 USE foodtruckapp_DB;
 
-

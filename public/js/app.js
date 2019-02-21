@@ -1,0 +1,126 @@
+let truck = $("#truckName").text();
+// array of truck objects
+let truckLocations = [];
+
+// user allows geolocation and function gets user position and truck name, then pushes truckOb to truckLocations array
+function getPosition() {
+	if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(displayLocationInfo);
+
+		function displayLocationInfo(position) {
+			const lat = position.coords.latitude;
+			const lng = position.coords.longitude;
+
+			let truckOb = {
+				truckName: truck,
+				lat: lat,
+				lng: lng,
+			}
+
+			console.log(truckOb);
+			truckLocations.push(truckOb)
+
+			console.log(`longitude: ${lng} | latitude: ${lat}`);
+		}
+	} else {
+		console.log("browser doesn't support geolocation api")
+	}
+
+	$("#vendorCheckIn").on("click", function (position) {
+		console.log(truckLocations);
+
+	})
+}
+getPosition();
+
+// geolocation
+var map, infoWindow;
+
+function initMap() {
+	map = new google.maps.Map(document.getElementById("map"), {
+		center: {lat: 32.2226, lng: 110.9747},
+		zoom: 6
+	});
+	console.log(map);
+
+	infoWindow = new google.maps.InfoWindow;
+
+	// Try HTML5 geolocation.
+	if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(function (position) {
+			var pos = {
+				lat: position.coords.latitude,
+				lng: position.coords.longitude
+			};
+
+			console.log(pos);
+
+			infoWindow.setPosition(pos);
+			infoWindow.setContent('Location found.');
+			infoWindow.open(map);
+			map.setCenter(pos);
+		}, function () {
+			handleLocationError(true, infoWindow, map.getCenter());
+		});
+	} else {
+		// Browser doesn't support Geolocation
+		handleLocationError(false, infoWindow, map.getCenter());
+	}
+}
+
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+	infoWindow.setPosition(pos);
+	infoWindow.setContent(browserHasGeolocation ?
+		'Error: The Geolocation service failed.' :
+		'Error: Your browser doesn\'t support geolocation.');
+	infoWindow.open(map);
+}
+
+// // geocoded
+// function initMap() {
+
+// 	var azStadium = {
+// 		info: '<strong>Arizona Stadium</strong><br>\
+// 					1 N National Championship Dr, Tucson, AZ 85719<br>\
+// 					<a href="https://goo.gl/maps/56oQf7aEkNU2">Get Directions</a>',
+// 		lat: 32.228948,
+// 		lng: 110.948254
+// 	};
+
+// 	var rocksRopes = {
+// 		info: '<strong>Rocks n Ropes</strong><br>\
+// 					330 S Toole Ave #400, Tucson, AZ 85701<br>\
+// 					<a href="https://goo.gl/maps/MwM9CgQEEzq">Get Directions</a>',
+// 		lat: 32.217654,
+// 		lng: 110.960857
+// 	};
+
+// 	var truckLocations = [
+// 		[azStadium.info, azStadium.lat, azStadium.lng, 0],
+// 		[rocksRopes.info, rocksRopes.lat, rocksRopes.lng, 1],
+// 	];
+
+// 	var map = new google.maps.Map($('#map'), {
+// 		zoom: 13,
+// 		center: new google.maps.LatLng(32.2226, 110.9747),
+// 		mapTypeId: google.maps.MapTypeId.ROADMAP
+// 	});
+
+// 	var infowindow = new google.maps.InfoWindow({});
+
+// 	var marker, i;
+
+// 	for (i = 0; i < truckLocations.length; i++) {
+// 		marker = new google.maps.Marker({
+// 			position: new google.maps.LatLng(truckLocations[i][1], truckLocations[i][2]),
+// 			map: map
+// 		});
+
+// 		google.maps.event.addListener(marker, 'click', (function (marker, i) {
+// 			return function () {
+// 				infowindow.setContent(truckLocations[i][0]);
+// 				infowindow.open(map, marker);
+// 			}
+// 		})(marker, i));
+// 	}
+// }
