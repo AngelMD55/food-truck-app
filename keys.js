@@ -1,3 +1,3 @@
 module.exports.mapsGeocode = {
-    key: process.env.mapsGeocode_key,
+  key: process.env.mapsGeocode_key
 };
