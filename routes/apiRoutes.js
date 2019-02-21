@@ -1,8 +1,7 @@
 var db = require("../models");
 
 // let  newId;
-module.exports = function(app){
-
+module.exports = function(app) {
   // Create a POST route to get data from signup
   app.post("/api/users", function(req, res) {
     db.User.create({
@@ -11,10 +10,9 @@ module.exports = function(app){
       userPassword: req.body.userPassword,
       userType: req.body.userType,
       userEmail: req.body.userEmail
-    }).then((data)=>{
-      res.json({id: data.dataValues.id})
-    }
-    );
+    }).then(data => {
+      res.json({ id: data.dataValues.id });
+    });
   });
 
   //Route to get info from users table api
@@ -32,21 +30,24 @@ module.exports = function(app){
   // });
 
   // Route to update users table api
-  app.put("/api/users/:id", function (req, res) {
-    db.User.update({
-      userName: req.body.userName,
-      userPhoneNum: req.body.userPhoneNum,
-      userAddress: req.body.userAddress,
-      userCity: req.body.userCity,
-      userState: req.body.userState,
-      userZip: req.body.userZip,
-      userGender: req.body.userGender,
-      userBday: req.body.userBday
-    },{
-      where : {
-        id: req.params.id
+  app.put("/api/users/:id", function(req, res) {
+    db.User.update(
+      {
+        userName: req.body.userName,
+        userPhoneNum: req.body.userPhoneNum,
+        userAddress: req.body.userAddress,
+        userCity: req.body.userCity,
+        userState: req.body.userState,
+        userZip: req.body.userZip,
+        userGender: req.body.userGender,
+        userBday: req.body.userBday
+      },
+      {
+        where: {
+          id: req.params.id
+        }
       }
-    }).then(function(data){
+    ).then(function(data) {
       console.log(data);
       return res.json(data);
     });
@@ -61,50 +62,47 @@ module.exports = function(app){
       foodCategory1: req.body.foodCategory1,
       foodCategory2: req.body.foodCategory2,
       foodCategory3: req.body.foodCategory3
-    }).then(
-      res.json({id: req.params.id})
-    );
+    }).then(res.json({ id: req.params.id }));
   });
 
-    // Route to update truck table api
-  app.put("/api/truckusers/:id", function (req, res) {
-    db.User.update({
-      // userName: req.body.userName,
-      userPhoneNum: req.body.userPhoneNum,
-      userAddress: req.body.userAddress,
-      userCity: req.body.userCity,
-      userState: req.body.userState,
-      userZip: req.body.userZip,
-      userGender: req.body.userGender,
-      userBday: req.body.userBday
-    },{
-      where : {
-        id: req.params.id
+  // Route to update truck table api
+  app.put("/api/truckusers/:id", function(req, res) {
+    db.User.update(
+      {
+        // userName: req.body.userName,
+        userPhoneNum: req.body.userPhoneNum,
+        userAddress: req.body.userAddress,
+        userCity: req.body.userCity,
+        userState: req.body.userState,
+        userZip: req.body.userZip,
+        userGender: req.body.userGender,
+        userBday: req.body.userBday
+      },
+      {
+        where: {
+          id: req.params.id
+        }
       }
-    }).then(function(data){
+    ).then(function(data) {
       console.log(data);
       return res.json(data);
     });
   });
 
-
-
-  app.put("/api/checkintrucks/", function (req, res) {
-    db.trucks.update({
-      truckLive: req.body.truckLive,
-    }, {
-        where: {
-          truckName: req.body.truckName
+  app.put("/api/checkintrucks/", function(req, res) {
+    db.trucks
+      .update(
+        {
+          truckLive: req.body.truckLive
+        },
+        {
+          where: {
+            truckName: req.body.truckName
+          }
         }
-      }).then(function (dbtrucks) {
+      )
+      .then(function(dbtrucks) {
         res.json(dbtrucks);
       });
-    
   });
 };
-
-
-
-
-
-
