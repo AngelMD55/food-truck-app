@@ -6,25 +6,32 @@ module.exports = function(app) {
       res.render("index")
       });
   // Load user profile page
-  app.get("/userp", function(req, res){
-    res.render("userProfile")
+  app.get("/userp/:id", function(req, res){
+    res.render("userProfile", {
+      id:req.params.id
+    })
     });
   // Load user view page
-  app.get("/userv", function(req, res){
-    console.log(db.User[req.params.id])
-    res.render("userView")
+  app.get("/userv/:id", function(req, res){
+    res.render("userView", {
+      id:req.params.id
+    })
   });
   // Load user contactus page
   app.get("/userc", function(req, res){
     res.render("userContactUs")
   });
   // Load vendor profile page
-  app.get("/vendorp", function(req, res){
-    res.render("vendorProfile")
+  app.get("/vendorp/:id", function(req, res){
+    res.render("vendorProfile", {
+      id:req.params.id
+    })
   })
   // Load vendor view page
-  app.get("/vendorv", function(req, res){
-    res.render("vendorView")
+  app.get("/vendorv/:id", function(req, res){
+    res.render("vendorView", {
+      id:req.params.id
+    })
   });
   // Load vendor contactus page
   app.get("/vendorc", function(req, res){

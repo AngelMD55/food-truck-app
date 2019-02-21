@@ -1,6 +1,6 @@
 var db = require("../models");
 
-let  newId;
+// let  newId;
 module.exports = function(app){
 
   // Create a POST route to get data from signup
@@ -11,27 +11,28 @@ module.exports = function(app){
       userPassword: req.body.userPassword,
       userType: req.body.userType,
       userEmail: req.body.userEmail
-    }).then(
-      res.json({id: req.params.id})
+    }).then((data)=>{
+      res.json({id: data.dataValues.id})
+    }
     );
   });
 
   //Route to get info from users table api
-  app.get("/api/users/", function(req, res){
-    db.User.findAll({
-      limit: 1,
-      order: [
-        ["id", "DESC"]
-      ]
-    }).then(function(result){
-      // console.log(result[0].id);
-      newId = result[0].id
-      return res.json(result);
-    });
-  });
+  // app.get("/api/users/", function(req, res){
+  //   db.User.findAll({
+  //     limit: 1,
+  //     order: [
+  //       ["id", "DESC"]
+  //     ]
+  //   }).then(function(result){
+  //     // console.log(result[0].id);
+  //     newId = result[0].id
+  //     return res.json(result);
+  //   });
+  // });
 
   // Route to update users table api
-  app.put("/api/users/", function (req, res) {
+  app.put("/api/users/:id", function (req, res) {
     db.User.update({
       userName: req.body.userName,
       userPhoneNum: req.body.userPhoneNum,
@@ -43,7 +44,7 @@ module.exports = function(app){
       userBday: req.body.userBday
     },{
       where : {
-        id: newId
+        id: req.params.id
       }
     }).then(function(data){
       console.log(data);
@@ -66,7 +67,7 @@ module.exports = function(app){
   });
 
     // Route to update truck table api
-  app.put("/api/users/", function (req, res) {
+  app.put("/api/truckusers/:id", function (req, res) {
     db.User.update({
       // userName: req.body.userName,
       userPhoneNum: req.body.userPhoneNum,
@@ -78,7 +79,7 @@ module.exports = function(app){
       userBday: req.body.userBday
     },{
       where : {
-        id: newId
+        id: req.params.id
       }
     }).then(function(data){
       console.log(data);

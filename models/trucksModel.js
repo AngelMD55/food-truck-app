@@ -20,12 +20,12 @@ module.exports = function (sequelize, DataTypes) {
             defaultValue: 'cat1'
         },
         foodCategory2: {
-            type: DataTypes.STRING,
-            defaultValue: 'cat2'
+            type: DataTypes.STRING
+            // defaultValue: 'cat2'
         },
         foodCategory3: {
-            type: DataTypes.STRING,
-            defaultValue: 'cat3'
+            type: DataTypes.STRING
+            // defaultValue: 'cat3'
         },
         truckLive:{
             type: DataTypes.BOOLEAN,
