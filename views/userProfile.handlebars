@@ -1,121 +1,130 @@
 {{> userNavbar/userNavbar}}
 <div class="container">
-    <div novalidate>
+    <form novalidate>
         <div class="card">
             <div class="card-body">
-                <fieldset disabled>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <input type="text" class="form-control" placeholder="First name">
-                        </div>
-                        <div class="col-md-4">
-                            <input type="text" class="form-control" placeholder="Last name">
-                        </div>
-                        <div class="col-md-4">
-                            <input type="text" class="form-control" placeholder="Email">
-                        </div>
-                    </div>
-                </fieldset>
-                <br>
-                <div class="card">
-                    <div class="card-header text-center">
-                        <p>Profile Image</p>
-                    </div>
-                    <div class="card-body">
-                        <div class="imageFile">
-                            <input type="file" class="imageFile" id="imageFile" required>
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <div class="card-body text-center">
-                    <div class="row">
-                        <div class="col">
-                            <input type="text" class="form-control" id="userName" placeholder="User Name" required>
-                            <div class="invalid-feedback">
-                                Please provide a valid address.
+                <div>
+                    <fieldset disabled>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" placeholder="First name">
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" placeholder="Last name">
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" placeholder="Email">
                             </div>
                         </div>
-                        <div class="col">
-                            <input type="tel" class="form-control" id="userPhoneNum" placeholder="Phone Number"
-                                required>
-                            <div class="invalid-feedback">
-                                Please provide a valid phone number.
+                    </fieldset>
+                    <br>
+                    <div class="card">
+                        <div class="card-header text-center">
+                            <p>Profile Image</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="imageFile">
+                                <input type="file" class="imageFile" id="imageFile" required>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="card-body text-center">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <input type="address" class="form-control" id="userAddress" placeholder="Address" required>
-                            <div class="invalid-feedback">
-                                Please provide a valid address.
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <input type="city" class="form-control" id="userCity" placeholder="City" required>
-                            <div class="invalid-feedback">
-                                Please provide a valid city.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body text-center">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <input type="state" class="form-control" id="userState" placeholder="State" required>
-                            <div class="invalid-feedback">
-                                Please provide a valid state.
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <input type="zip" class="form-control" id="userZip" placeholder="Zip Code" required>
-                            <div class="invalid-feedback">
-                                Please provide a valid zip.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
+                    <br>
                     <div class="card-body text-center">
                         <div class="row">
-                            <form>
-                                <input type="radio" name="gender" value="male"> Male
-                                <input type="radio" name="gender" value="female"> Female
-                                <input type="radio" name="gender" value="other"> Prefer not to Answer
-                            </form>
+                            <div class="col">
+                                <input type="text" class="form-control" id="userName" placeholder="User Name" required>
+                                <div class="invalid-feedback">
+                                    Please provide a valid address.
+                                </div>
+                            </div>
+                            <div class="col">
+                                <input type="tel" class="form-control" id="userPhoneNum" placeholder="Phone Number"
+                                    required>
+                                <div class="invalid-feedback">
+                                    Please provide a valid phone number.
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <br>
-                <div class="card">
-                    <div class="card-header text-center">
-                        <p>Date of Birth</p>
-                    </div>
-                    <div class="card-body">
-                        <div class="form-group">
-                            <input type="date" id="birthDate" class="form-control">
+                    <div class="card-body text-center">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="address" class="form-control" id="userAddress" placeholder="Address"
+                                    required>
+                                <div class="invalid-feedback">
+                                    Please provide a valid address.
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="city" class="form-control" id="userCity" placeholder="City" required>
+                                <div class="invalid-feedback">
+                                    Please provide a valid city.
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <br>
-                <div class="form-group">
-                    <div class="form-check">
-                        <input class="agreement" type="checkbox" value="" id="agreement" required>
-                        <label class="agreement" for="agreement">
-                            Agree to terms and conditions
-                        </label>
-                        <div class="invalid-feedback">
-                            You must agree before submitting.
+                    <div class="card-body text-center">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="state" class="form-control" id="userState" placeholder="State" required>
+                                <div class="invalid-feedback">
+                                    Please provide a valid state.
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="zip" class="form-control" id="userZip" placeholder="Zip Code" required>
+                                <div class="invalid-feedback">
+                                    Please provide a valid zip.
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <div class="row">
+                                <form>
+                                    <div class="col-md-4">
+                                        <input type="radio" name="ugender" value="male"> Male
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="radio" name="ugender" value="female"> Female
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="radio" name="ugender" value="other"> Prefer not to Answer
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="card">
+                        <div class="card-header text-center">
+                            <p>Date of Birth</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <input type="date" id="birthDate" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="agreement" type="checkbox" value="" id="agreement" required>
+                            <label class="agreement" for="agreement">
+                                Agree to terms and conditions
+                            </label>
+                            <div class="invalid-feedback">
+                                You must agree before submitting.
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-success" id="userSubmit">Submit</button>
                 </div>
-                <button type="button" class="btn btn-success" id="userSubmit">Submit</button>
             </div>
+            </form>
         </div>
-        </form>
-    </div>
+    </form>
 </div>
 <br>
 {{> footer/footer}}
