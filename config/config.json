@@ -1,7 +1,11 @@
 {
   "development": {
     "username": "root",
+<<<<<<< HEAD
     "password": "WhereintheworldisBunny87",
+=======
+    "password": "root1234",
+>>>>>>> 6e571e865617f08188a0dd0e262b942963c8cb43
     "database": "foodtruckapp_db",
     "host": "localhost",
     "dialect": "mysql"
