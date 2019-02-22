@@ -6,16 +6,63 @@ $(document).ready(function () {
   let userType;
   let userEmail;
 
+  // get route to get api data
+  function getID() {
+    $.get("/api/allusers", function (data) {
+      // console.log(data[1].userName)
+      user = data
+    })
+  }
+
+  getID();
+
+  //onclick function for login
+  $("#login").on("click", function (event) {
+    event.preventDefault();
+
+    let loginUser = $("#loginUser").val().trim();
+    let loginPassword = $("#loginPassword").val().trim();
+
+    if (loginUser == "") {
+      alert("Please enter email or user name")
+      $("#loginUser").focus();
+      return false;
+    }
+
+    if (loginPassword == "") {
+      alert("Please enter password")
+      $("#loginPassword").focus();
+      return false;
+    }
+
+    if (loginUser != "" && loginPassword != "") {
+
+      for (let i = 0; i < user.length; i++) {
+
+        if (loginUser === user[i].userName && loginPassword === user[i].userPassword){
+          window.location.replace("/userv/" + user[i].id);
+          break;
+          
+        }else if($("#divlogin").is(":hidden")){          
+          $("#divlogin").removeClass("hidden").addClass("visible")
+        }
+
+      }
+    }
+  })
+
+
+
   // onclick function to get values from users input
   $("#signUpSubmit").on("click", function (event) {
     event.preventDefault();
 
     //Passing values to variables
     firstName = $("#userFirstName").val().trim(),
-    lastName = $("#userLastName").val().trim(),
-    userPassword = $("#password").val().trim(),
-    userType = $("input[name='type']:checked").val(),
-    userEmail = $("#userEmail").val().trim()
+      lastName = $("#userLastName").val().trim(),
+      userPassword = $("#password").val().trim(),
+      userType = $("input[name='type']:checked").val(),
+      userEmail = $("#userEmail").val().trim()
 
     //Creating object to pass to database
     let newUserSignUp = {
@@ -32,29 +79,20 @@ $(document).ready(function () {
       url: "/api/users",
       data: newUserSignUp
     }).then(function (res) {
-      if(newUserSignUp.userType === "eater"){
-      window.location.replace("/userp/" + res.id);
-      }else{
+      if (newUserSignUp.userType === "eater") {
+        window.location.replace("/userp/" + res.id);
+      } else {
         window.location.replace("/vendorp/" + res.id);
       }
     });
   });
 
-  // // get route to get api data
-  // function getID(){
-  //   $.get("/api/users", function(data){
-  //     user = data;
-  //   })
-  // }
-
-  // getID();
-
-    // onclick function to get values from user input and update database
+  // onclick function to get values from user input and update database
   $("#userSubmit").on("click", function (event) {
     event.preventDefault();
     console.log("Running")
     let updateUserInfo = {
-      userName : $("#userName").val().trim(),
+      userName: $("#userName").val().trim(),
       userPhoneNum: $("#userPhoneNum").val().trim(),
       userAddress: $("#userAddress").val().trim(),
       userCity: $("#userCity").val().trim(),
@@ -69,12 +107,12 @@ $(document).ready(function () {
       url: "/api/users/" + $("#id").val(),
       data: updateUserInfo
     }).then(function (res) {
-      window.location.replace("/userv/" + $("#id").val(),);
+      window.location.replace("/userv/" + $("#id").val());
     })
   })
-   
+
   //on click function to create truck table and update user table
-  $("#vendorSubmit").on("click", function(event){
+  $("#vendorSubmit").on("click", function (event) {
     event.preventDefault();
 
     //Getting food category 
@@ -82,7 +120,7 @@ $(document).ready(function () {
     let allFoodCategories = document.querySelectorAll('input[name="foodCategory"]:checked');
     let foodCategories = [];
 
-    for (let i = 0; i < allFoodCategories.length; i++){
+    for (let i = 0; i < allFoodCategories.length; i++) {
       foodCategories.push(allFoodCategories[i].value);
     }
 
@@ -97,14 +135,16 @@ $(document).ready(function () {
       userZip: $("#truckZip").val().trim(),
       userGender: $("input[name='vgender']:checked").val(),
       userBday: $("#birthDateVendor").val().trim(),
+      userName: $("#vUserName").val().trim()
     }
 
     let newTruckVendor = {
       truckName: $("#truckName").val().trim(),
+      truckDescription: $("#vendorDescription").val(),
       foodCategory1: foodCategories[0],
       foodCategory2: foodCategories[1],
-      foodCategory3: foodCategories[2]
-      // userName: $("#userName").val().trim(),
+      foodCategory3: foodCategories[2],
+      userName: $("#vUserName").val().trim()
     }
     console.log(newTruckVendor);
 
@@ -112,18 +152,18 @@ $(document).ready(function () {
       method: "POST",
       url: "/api/trucks",
       data: newTruckVendor,
-    }).then(function(){
-        $.ajax({
-          method: "PUT",
-          url: "/api/truckusers/"  + $("#idv").val(),
-          data: updateTruckUserInfo
-        }).then(function (res) {
-         window.location.replace("/vendorv/" + $("#idv").val(),)
-        });
+    }).then(function () {
+      $.ajax({
+        method: "PUT",
+        url: "/api/truckusers/" + $("#idv").val(),
+        data: updateTruckUserInfo
+      }).then(function (res) {
+        window.location.replace("/vendorv/" + $("#idv").val())
+      });
     });
   });
 
-  $("#vendorDescription").keyup(function(){
+  $("#vendorDescription").keyup(function () {
     $("#count").text("Characters left: " + (540 - $(this).val().length));
   });
 });
