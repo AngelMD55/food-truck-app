@@ -15,19 +15,14 @@ module.exports = function(app) {
     });
   });
 
-  //Route to get info from users table api
-  // app.get("/api/users/", function(req, res){
-  //   db.User.findAll({
-  //     limit: 1,
-  //     order: [
-  //       ["id", "DESC"]
-  //     ]
-  //   }).then(function(result){
-  //     // console.log(result[0].id);
-  //     newId = result[0].id
-  //     return res.json(result);
-  //   });
-  // });
+  // Route to get info from users table
+  app.get("/api/allusers/", function(req, res){
+    db.User.findAll({
+    }).then(function(result){
+      // console.log(result);
+      return res.json(result);
+    });
+  });
 
   // Route to update users table api
   app.put("/api/users/:id", function(req, res) {
@@ -58,7 +53,8 @@ module.exports = function(app) {
     db.Truck.create({
       truckName: req.body.truckName,
       priceRange: req.body.priceRange,
-      // userName: req.body.userName,
+      userName: req.body.userName,
+      truckDescription: req.body.truckDescription,
       foodCategory1: req.body.foodCategory1,
       foodCategory2: req.body.foodCategory2,
       foodCategory3: req.body.foodCategory3
@@ -69,7 +65,7 @@ module.exports = function(app) {
   app.put("/api/truckusers/:id", function(req, res) {
     db.User.update(
       {
-        // userName: req.body.userName,
+        userName: req.body.userName,
         userPhoneNum: req.body.userPhoneNum,
         userAddress: req.body.userAddress,
         userCity: req.body.userCity,

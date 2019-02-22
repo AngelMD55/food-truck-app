@@ -1,12 +1,12 @@
 <form>
-    <div class="form-row align-items-center">
+    <div class="form-row align-items-center" >
         <div class="col-sm-3 my-1">
             <label for="Email">Email</label>
-            <input type="text" class="form-control" placeholder="Email">
+            <input type="text" class="form-control" id="loginUser" placeholder="Email or Username">
         </div>
         <div class="col-sm-3 my-1">
             <label for="Password">Password</label>
-            <input type="password" class="form-control" placeholder="Password">
+            <input type="password" class="form-control" id="loginPassword" placeholder="Password">
         </div>
         <div class="col-auto my-1">
             <div class="form-check">
@@ -17,7 +17,10 @@
             </div>
         </div>
         <div class="col-auto my-1">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" id="login">Log in</button>
         </div>
+        <div id="divlogin" class="hidden">
+            <p style="color:red">Please enter a valid Username or Passwrord</p>
+        </div>    
     </div>
 </form>

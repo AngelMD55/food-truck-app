@@ -41,6 +41,9 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
             defaultValue: (110.9747)
         },
+        truckDescription:{
+            type: DataTypes.TEXT
+        }
     }, {
             freezeTableName: true,
         });
